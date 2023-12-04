@@ -1,13 +1,26 @@
-def sam_y_kelly(sam, kelly, diferencia):
+def min_num(sam_daily, kelly_daily, difference):
+    if kelly_daily <= sam_daily:
+        return -1
 
-    sam_result = diferencia + sam
-    kelly_result = kelly
-    dias = 1
-    while kelly_result < sam_result:
-        dias += 1
-        sam_result = sam_result + 3
-        kelly_result = kelly_result + 5
-        print(sam_result, kelly_result, dias)
-    return dias
+    days = 0
+    sam_solved = difference
+    kelly_solved = 0
 
-print("Kelly will pass Sam on day", sam_y_kelly(3, 5, 5))
+    while sam_solved >= 0:
+        sam_solved += sam_daily
+        kelly_solved += kelly_daily
+        difference = sam_solved - kelly_solved
+        days += 1
+
+        if difference <= 0:
+            return days
+
+    return -1
+
+sam_daily = int(input("Enter Sam's daily solved problems:"))
+kelly_daily = int(input("Enter Kelly's daily solved problems:"))
+difference = int(input("Enter the initial difference in solved problems (Sam ahead):"))
+
+result = min_num(sam_daily, kelly_daily, difference)
+
+print(f"Minimum number of days for Kelly to surpass Sam: {result}")
