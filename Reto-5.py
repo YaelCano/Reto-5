@@ -1,14 +1,13 @@
-def pass_sam(kelly_daily_solutions, sam_daily_solutions):
-    kelly_total_solutions = 0
-    sam_total_solutions = 0
-    day = 0
+def sam_y_kelly(sam, kelly, diferencia):
 
-    while kelly_total_solutions <= sam_total_solutions:
-        kelly_total_solutions += kelly_daily_solutions
-        sam_total_solutions += sam_daily_solutions
-        day += 1
+    sam_result = diferencia + sam
+    kelly_result = kelly
+    dias = 1
+    while kelly_result < sam_result:
+        dias += 1
+        sam_result = sam_result + 3
+        kelly_result = kelly_result + 5
+        print(sam_result, kelly_result, dias)
+    return dias
 
-    return day
-
-
-print(pass_sam(5, 4))
+print("Kelly will pass Sam on day", sam_y_kelly(3, 5, 5))
